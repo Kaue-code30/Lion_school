@@ -95,6 +95,9 @@ const getStudentsStatus = function(status){
                 photo:students.foto,
                 date:students.curso.forEach(function(date){
                     date.conclusao
+                }),
+                diciplinas:students.curso.forEach(function(diciplina){
+                    diciplina.disciplinas
                 })
             }
             )
@@ -104,22 +107,6 @@ const getStudentsStatus = function(status){
     return jsonStudent
 }
 
-const getStudentForStatus = function(matricula){
-    let listStudent = []
-    let jsonStudent = {}
-
-    student.alunos.forEach(function(data){
-        data.curso.forEach(function(dataCurso){
-            if(matricula == data.matricula){
-                listStudent.push(dataCurso.disciplinas)
-            }
-        })
-        jsonStudent.teste = listStudent
-    })
-    return jsonStudent
-}
-
-console.log(getStudentForStatus("20151001001"))
 // EXTRAS 
 
 module.exports = {
@@ -128,5 +115,4 @@ module.exports = {
     getStudentInformation,
     getStudentsForCourse,
     getStudentsStatus
-    ,getStudentForStatus
 }
