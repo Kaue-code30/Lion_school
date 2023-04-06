@@ -116,6 +116,29 @@ app.get("/v1/lion-school/alunos/status/:status",cors(),async function(request,re
   response.json(dataStatus)
 })
 
+app.get("/v1/lion-school/alunos/status/:matricula"),cors(),async function(request,response,next){
+  let status = request.params.matricula
+  let statusCode;
+  let dataStatus = {}
+
+  
+  if (status == '' || status == undefined || !isNaN(status) ) {
+    statusCode = 400
+    dataStatus.message = ("Não é possível processar a requisição!")
+  } 
+    let funcao = listCourse.getStudentForStatus(status)
+
+    if (funcao) {
+      statusCode = 200
+      dataStatus = funcao  
+    }else{
+      statusCode = 404
+    }
+    
+  response.status(statusCode)
+  response.json(dataStatus)
+
+}
 
 
 app.listen(8080, function () {
