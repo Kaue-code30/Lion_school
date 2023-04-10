@@ -1,6 +1,7 @@
 /*
 Name: Kauê Lima, Mônica
 Version: 1.0
+Objetivo: Criacão dos Endpoints da API.
 */
 
 
@@ -29,15 +30,16 @@ const { getStudentInformation, getStudentsForCourse } = require("./modulo/functi
 
 
 
-app.get("/v1/lion-school/cursos", cors(), async function (request, response, next) { // endpoint para listar os Estados
-    let listCourseSchool = listCourse.getListCourse()
+app.get("/v1/lion-school/cursos", cors(), async function (request, response, next) { // 
 
+    let listCourseSchool = listCourse.getListCourse()
     response.json(listCourseSchool)
     response.status(200);
 
 });
 
 app.get("/v1/lion-school/alunos", cors(), async function (request, response, next) {
+  
     let listStudentData = listCourse.getListNameStudents()
     response.json(listStudentData)
     response.status(200)
@@ -115,7 +117,6 @@ app.get("/v1/lion-school/alunos/status/:status",cors(),async function(request,re
   response.status(statusCode)
   response.json(dataStatus)
 })
-
 
 
 app.listen(8080, function () {

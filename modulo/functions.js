@@ -1,5 +1,8 @@
-// import{cursos} from "./cursos.js"
-// import{alunos} from "./alunos.js"
+/*
+Nome: Kauê e Monica 
+Versão: 1.0
+Objetivo: Criar as funções do Back-end
+*/
 
 const course = require('./cursos.js')
 const student = require('./alunos.js')
@@ -57,11 +60,12 @@ const getStudentInformation = function(registration){
 const getStudentsForCourse = function(course){
     let listStudent = []
     let jsonStudent = {}
+    let curso = course.toUpperCase()
     student.alunos.forEach(function(students){
 
         students.curso.forEach(function(dataCourse){
 
-            if(course == dataCourse.sigla){
+            if(curso == dataCourse.sigla){
                 listStudent.push(
                     {        
                         name:students.nome,
@@ -80,8 +84,10 @@ const getStudentsForCourse = function(course){
 }
 
 const getStudentsStatus = function(status){
+    
     let listStudent = []
     let jsonStudent = {}
+
 
     student.alunos.forEach(function(students){
       if(status == students.status){
@@ -107,7 +113,7 @@ const getStudentsStatus = function(status){
     return jsonStudent
 }
 
-// EXTRAS 
+
 
 module.exports = {
     getListCourse,
